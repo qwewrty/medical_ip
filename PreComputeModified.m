@@ -31,6 +31,16 @@ for i = 1:DB_IMAGE_COUNT
     DB_Data_Set.IDM       = zeros(JigsawMaxRowCount,JigsawMaxColCount);
     DB_Data_Set.numPixels = zeros(JigsawMaxRowCount,JigsawMaxColCount);
 
+    TF1 = double(0);
+    TF2 = double(0);
+    TF3 = double(0);
+    TF4 = double(0);
+    TF5 = double(0);
+    TF6 = double(0);
+    TF7 = double(0);
+    TF8 = double(0);
+    TF9 = double(0);
+
     ImgRow = 1;
     JigsawRowCount = 1;
     while ( ImgRow <= DbRow )
@@ -47,15 +57,6 @@ for i = 1:DB_IMAGE_COUNT
             IDM = double(0);
             sum = uint32(0);
             NumPixels = 0;
-            TF1 = double(0);
-            TF2 = double(0);
-            TF3 = double(0);
-            TF4 = double(0);
-            TF5 = double(0);
-            TF6 = double(0);
-            TF7 = double(0);
-            TF8 = double(0);
-            TF9 = double(0);
             
             row = ImgRow;
             while ( row < ( ImgRow + JigsawRowSize ) )
@@ -68,15 +69,27 @@ for i = 1:DB_IMAGE_COUNT
                         ASM = double(ASM + double((DB_Img(row,col)^2)));
                         IDM = double((1/double(1+((row-col)^2)))*double(DB_Img(row, col)));
                         sum = uint32( sum + uint32(DB_Img(row,col)) );
-                        TF1 = double(TF1 + double(DB_Img(row, col)* F1(mod(row, 5)+1, mod(col, 5)+1)));
-                        TF2 = double(TF2 + double(DB_Img(row, col)* F1(mod(row, 5)+1, mod(col, 5)+1)));
-                        TF3 = double(TF3 + double(DB_Img(row, col)* F1(mod(row, 5)+1, mod(col, 5)+1)));
-                        TF4 = double(TF4 + double(DB_Img(row, col)* F1(mod(row, 5)+1, mod(col, 5)+1)));
-                        TF5 = double(TF5 + double(DB_Img(row, col)* F1(mod(row, 5)+1, mod(col, 5)+1)));
-                        TF6 = double(TF6 + double(DB_Img(row, col)* F1(mod(row, 5)+1, mod(col, 5)+1)));
-                        TF7 = double(TF7 + double(DB_Img(row, col)* F1(mod(row, 5)+1, mod(col, 5)+1)));
-                        TF8 = double(TF8 + double(DB_Img(row, col)* F1(mod(row, 5)+1, mod(col, 5)+1)));
-                        TF9 = double(TF9 + double(DB_Img(row, col)* F1(mod(row, 5)+1, mod(col, 5)+1)));
+                        modRow = mod(row,5);
+                        modCol= mod(col,5);
+                        if modRow == 0
+                            modRow=5;
+                        end
+                        if modCol == 0
+                            modCol=5;
+                        end
+                        if row == 56 && col == 100
+                            row
+                        end
+                            
+                        TF1 = double(TF1 + double(DB_Img(row, col)* F1(modRow,modCol)));
+                        TF2 = double(TF2 + double(DB_Img(row, col)* F2(modRow,modCol)));
+                        TF3 = double(TF3 + double(DB_Img(row, col)* F3(modRow,modCol)));
+                        TF4 = double(TF4 + double(DB_Img(row, col)* F4(modRow,modCol)));
+                        TF5 = double(TF5 + double(DB_Img(row, col)* F5(modRow,modCol)));
+                        TF6 = double(TF6 + double(DB_Img(row, col)* F6(modRow,modCol)));
+                        TF7 = double(TF7 + double(DB_Img(row, col)* F7(modRow,modCol)));
+                        TF8 = double(TF8 + double(DB_Img(row, col)* F8(modRow,modCol)));
+                        TF9 = double(TF9 + double(DB_Img(row, col)* F9(modRow,modCol)));
                         NumPixels = ( NumPixels + 1 );
                     end
 
