@@ -30,6 +30,15 @@ for i = 1:DB_IMAGE_COUNT
     DB_Data_Set.ASM       = zeros(JigsawMaxRowCount,JigsawMaxColCount);
     DB_Data_Set.IDM       = zeros(JigsawMaxRowCount,JigsawMaxColCount);
     DB_Data_Set.numPixels = zeros(JigsawMaxRowCount,JigsawMaxColCount);
+    DB_Data_Set.TF1 = zeros(JigsawMaxRowCount,JigsawMaxColCount);
+    DB_Data_Set.TF2 = zeros(JigsawMaxRowCount,JigsawMaxColCount);
+    DB_Data_Set.TF3 = zeros(JigsawMaxRowCount,JigsawMaxColCount);
+    DB_Data_Set.TF4 = zeros(JigsawMaxRowCount,JigsawMaxColCount);
+    DB_Data_Set.TF5 = zeros(JigsawMaxRowCount,JigsawMaxColCount);
+    DB_Data_Set.TF6 = zeros(JigsawMaxRowCount,JigsawMaxColCount);
+    DB_Data_Set.TF7 = zeros(JigsawMaxRowCount,JigsawMaxColCount);
+    DB_Data_Set.TF8 = zeros(JigsawMaxRowCount,JigsawMaxColCount);
+    DB_Data_Set.TF9 = zeros(JigsawMaxRowCount,JigsawMaxColCount);
 
     TF1 = double(0);
     TF2 = double(0);
@@ -77,9 +86,6 @@ for i = 1:DB_IMAGE_COUNT
                         if modCol == 0
                             modCol=5;
                         end
-                        if row == 56 && col == 100
-                            row
-                        end
                             
                         TF1 = double(TF1 + double(DB_Img(row, col)* F1(modRow,modCol)));
                         TF2 = double(TF2 + double(DB_Img(row, col)* F2(modRow,modCol)));
@@ -112,6 +118,15 @@ for i = 1:DB_IMAGE_COUNT
             DB_Data_Set.ASM(JigsawRowCount,JigsawColCount) = ASM;
             DB_Data_Set.IDM(JigsawRowCount,JigsawColCount) = IDM;
             DB_Data_Set.numPixels(JigsawRowCount,JigsawColCount) = NumPixels;
+            DB_Data_Set.TF1(JigsawRowCount,JigsawColCount) = TF1;
+            DB_Data_Set.TF1(JigsawRowCount,JigsawColCount) = TF2;
+            DB_Data_Set.TF1(JigsawRowCount,JigsawColCount) = TF3;
+            DB_Data_Set.TF1(JigsawRowCount,JigsawColCount) = TF4;
+            DB_Data_Set.TF1(JigsawRowCount,JigsawColCount) = TF5;
+            DB_Data_Set.TF1(JigsawRowCount,JigsawColCount) = TF6;
+            DB_Data_Set.TF1(JigsawRowCount,JigsawColCount) = TF7;
+            DB_Data_Set.TF1(JigsawRowCount,JigsawColCount) = TF8;
+            DB_Data_Set.TF1(JigsawRowCount,JigsawColCount) = TF9;
 
             ImgCol = ( ImgCol + JigsawColSize );
             JigsawColCount = ( JigsawColCount + 1 );
